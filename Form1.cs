@@ -1,4 +1,4 @@
-namespace C2_110924
+namespace Proyecto1Seminario2Grupo13
 {
     public partial class Form1 : Form
     {

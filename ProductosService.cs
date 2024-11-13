@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C2_110924
+namespace Proyecto1Seminario2Grupo13
 {
     internal static class ProductosService
     {
