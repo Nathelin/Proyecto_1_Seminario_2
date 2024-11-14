@@ -24,14 +24,9 @@ namespace Proyecto1Seminario2Grupo13
         public string ID
         {
             get { return _id; }
-            set
-            {
-                if (value != String.Empty)
-                {
-                    _id = value;
-                }
-            }
+            private set { _id = value; }
         }
+
 
         public string Nombre
         {

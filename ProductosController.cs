@@ -17,7 +17,14 @@ namespace Proyecto1Seminario2Grupo13
             // Mandamos los datos al almacenamiento
             ProductosService.GuardarProducto(unProducto);
         }
-        
+
+        public static Producto CrearProducto(string nombre, int cantidad) 
+        { 
+            int nuevoID = ProductosService.ObtenerNuevoIDProducto();
+            Producto nuevoProducto = new Producto(nuevoID.ToString(), nombre, cantidad);
+            GuardarProducto(nuevoProducto); return nuevoProducto; 
+        }
+
         public static List<Producto> CargarMovimientos(List<Producto> productos)
         {
             foreach (Producto producto in productos)

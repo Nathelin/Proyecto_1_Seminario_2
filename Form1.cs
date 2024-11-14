@@ -33,17 +33,24 @@ namespace Proyecto1Seminario2Grupo13
 
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+   private void btnAgregar_Click(object sender, EventArgs e)
         {
-            string idProducto = this.txtID.Text;
-            string nombreProducto = this.txtNombre.Text;
-            int cantidadInicial = int.Parse(this.nupCantidad.Text);
+            try
+            {
+                string nombreProducto = this.txtNombre.Text;
+                int cantidadInicial = int.Parse(this.nupCantidad.Text);
 
-            Producto unProducto = new Producto(idProducto, nombreProducto, cantidadInicial);
+                // Usamos el método CrearProducto del controlador para generar el ID automáticamente
+                Producto unProducto = ProductosController.CrearProducto(nombreProducto, cantidadInicial);
 
-            ProductosController.GuardarProducto(unProducto);
-            sincronizarListado();
+                sincronizarListado();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Soy un programa malo y no me gusta funcionar. {ex.Message}");
+            }
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
