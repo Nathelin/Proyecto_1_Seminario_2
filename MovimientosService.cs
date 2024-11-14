@@ -73,5 +73,43 @@ namespace Proyecto1Seminario2Grupo13
             return new List<Movimiento>();
            
         }
+
+        public static int ObtenerNuevoID_Movimiento()
+        {
+            try
+            {
+                // Se establece el nombre del archivo a leer
+                string fileName = Path.Combine(GetAppPath(), "movimientos.txt");
+                if (File.Exists(fileName))
+                {
+                    // Se leen todas las líneas del archivo
+                    string[] lineas = File.ReadAllLines(fileName);
+
+                    // Si hay líneas, obtenemos el último ID
+                    if (lineas.Length > 0)
+                    {
+                        // Se toma la última línea para obtener el último movimiento
+                        string ultimaLinea = lineas[lineas.Length - 1];
+                        var datos = ultimaLinea.Split(";");
+
+                        // Se extrae el primer dato (en este caso el ID) de la última línea y se convierte a entero
+                        int ultimoID = int.Parse(datos[0]);
+
+                        // Retornamos el nuevo ID sumando 1 al último ID
+                        return ultimoID + 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            // Si el archivo no existe o está vacío, comenzamos con ID 1
+            return 1;
+        }
+
+        
+
     }
 }

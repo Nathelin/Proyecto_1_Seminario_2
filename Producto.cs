@@ -1,4 +1,4 @@
-﻿using C2_110924;
+﻿//using C2_110924;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +62,7 @@ namespace Proyecto1Seminario2Grupo13
             return $"{_nombre} [{_id}] | Stock actual: {_cantidad}";
         }
 
+        /*
         public int StockActual
         {
             get
@@ -73,40 +74,9 @@ namespace Proyecto1Seminario2Grupo13
                 }
                 return stockActual;
             }
-        }
+        } */
 
-        // Se define la lista de movimientos de stock
-        private List<Movimiento> _movimientos = new List<Movimiento>();
+       
 
-        public void CargarMovimientos(List<Movimiento> listaMovimientos)
-        {
-            _movimientos = listaMovimientos;
-        }
-
-        // Se definen los métodos para agregar y restar stock
-        public Movimiento agregarUnidades(int cantidadUnidades,
-            DateTime fecha)
-        {
-            int nuevoID = ProductosService.ObtenerNuevoID();
-
-            // Generamos el objeto para registrar el movimiento
-            Movimiento carga = new Movimiento(nuevoID, cantidadUnidades, fecha);
-            // Se agrega
-            _movimientos.Add(carga);
-            return carga;
-        }
-
-        public Movimiento restarUnidades(int cantidadUnidades,
-            DateTime fecha)
-        {
-            int nuevoID = ProductosService.ObtenerNuevoID();
-
-            // Generamos el objeto para registrar el movimiento
-            Movimiento descarga = new Movimiento(nuevoID, -cantidadUnidades, fecha);
-
-            // Se agrega
-            _movimientos.Add(descarga);
-            return descarga;
-        }
     }
 }

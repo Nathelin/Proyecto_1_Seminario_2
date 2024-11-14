@@ -1,3 +1,5 @@
+using C2_110924;
+
 namespace Proyecto1Seminario2Grupo13
 {
     public partial class Form1 : Form
@@ -26,7 +28,7 @@ namespace Proyecto1Seminario2Grupo13
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error  en la lectura de productos.");
+                MessageBox.Show("Hubo un error  en la lectura de productos.", ex.Message);
             }
 
         }
@@ -66,16 +68,16 @@ namespace Proyecto1Seminario2Grupo13
                 if (this.cbxTipoMovimiento.SelectedIndex == 0)
                 {
                     // Ingreso
-                    Movimiento unMovimiento = _unProducto.agregarUnidades(cantidadIngresada, DateTime.Now);
-                    ProductosController.AgregarMovimiento(_unProducto, unMovimiento);
+                    Movimiento unMovimiento = MovimientosController.agregarUnidades(cantidadIngresada, DateTime.Now);
+                    MovimientosController.AgregarMovimiento(_unProducto, unMovimiento);
                 }
                 else
                 {
                     // Egreso
                     try
                     {
-                        Movimiento unMovimiento = _unProducto.restarUnidades(cantidadIngresada, DateTime.Now);
-                        ProductosController.AgregarMovimiento(_unProducto, unMovimiento);
+                        Movimiento unMovimiento = MovimientosController.restarUnidades(cantidadIngresada, DateTime.Now);
+                        MovimientosController.AgregarMovimiento(_unProducto, unMovimiento);
                     }
                     catch (Exception ex)
                     {
