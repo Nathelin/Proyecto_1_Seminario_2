@@ -24,7 +24,7 @@ namespace Proyecto1Seminario2Grupo13
                 // Se genera un StreamWriter para controlar la escritura de datos
                 using (StreamWriter archivoSalida = new StreamWriter(fileName))
                 {
-                    string datos = $"{unProducto.ID};{unProducto.Nombre};{unProducto.Cantidad}";
+                    string datos = $"{unProducto.ID};{unProducto.Nombre}";
                     archivoSalida.WriteLine(datos);
                 }
             }
@@ -33,7 +33,7 @@ namespace Proyecto1Seminario2Grupo13
                 // Se añaden datos al archivo ya que existe, para eso se establece el segundo parámetro
                 using (StreamWriter archivoSalida = new StreamWriter(fileName, true))
                 {
-                    string datos = $"{unProducto.ID};{unProducto.Nombre};{unProducto.Cantidad}";
+                    string datos = $"{unProducto.ID};{unProducto.Nombre}";
                     archivoSalida.WriteLine(datos);
                 }
             }
@@ -58,7 +58,7 @@ namespace Proyecto1Seminario2Grupo13
                 foreach (string productoComoTexto in lineas) 
                 {
                     var datos = productoComoTexto.Split(";");
-                    Producto unProducto = new Producto(datos[0], datos[1], int.Parse(datos[2]));
+                    Producto unProducto = new Producto(datos[0], datos[1]); //int.Parse(datos[2])
                     productos.Add(unProducto);  
                 }
                 return productos;

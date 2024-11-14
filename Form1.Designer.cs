@@ -30,9 +30,7 @@
         {
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             txtNombre = new TextBox();
-            nupCantidad = new NumericUpDown();
             groupBox1 = new GroupBox();
             btnModificar = new Button();
             cbxTipoMovimiento = new ComboBox();
@@ -42,55 +40,37 @@
             lstProductos = new ListBox();
             label4 = new Label();
             btnAgregar = new Button();
-            btnRecargar = new Button();
-            txtID = new TextBox();
-            label7 = new Label();
-            ((System.ComponentModel.ISupportInitialize)nupCantidad).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nupCantidadMovimineto).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(13, 9);
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(0, 0);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(201, 28);
+            label1.Size = new Size(910, 78);
             label1.TabIndex = 0;
             label1.Text = "Gestión de productos";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(13, 153);
+            label2.Location = new Point(21, 122);
             label2.Name = "label2";
-            label2.Size = new Size(208, 28);
+            label2.Size = new Size(163, 21);
             label2.TabIndex = 1;
             label2.Text = "Nombre del producto:";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(13, 198);
-            label3.Name = "label3";
-            label3.Size = new Size(192, 28);
-            label3.TabIndex = 2;
-            label3.Text = "Cantidad disponible:";
-            // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(271, 150);
+            txtNombre.Location = new Point(277, 114);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(246, 34);
+            txtNombre.Size = new Size(246, 29);
             txtNombre.TabIndex = 3;
-            // 
-            // nupCantidad
-            // 
-            nupCantidad.Location = new Point(271, 198);
-            nupCantidad.Name = "nupCantidad";
-            nupCantidad.Size = new Size(246, 34);
-            nupCantidad.TabIndex = 4;
             // 
             // groupBox1
             // 
@@ -99,7 +79,7 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(nupCantidadMovimineto);
-            groupBox1.Location = new Point(15, 370);
+            groupBox1.Location = new Point(35, 464);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(781, 145);
             groupBox1.TabIndex = 5;
@@ -122,7 +102,7 @@
             cbxTipoMovimiento.Items.AddRange(new object[] { "AGREGAR", "QUITAR" });
             cbxTipoMovimiento.Location = new Point(228, 88);
             cbxTipoMovimiento.Name = "cbxTipoMovimiento";
-            cbxTipoMovimiento.Size = new Size(150, 36);
+            cbxTipoMovimiento.Size = new Size(150, 29);
             cbxTipoMovimiento.TabIndex = 11;
             // 
             // label6
@@ -130,7 +110,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(23, 91);
             label6.Name = "label6";
-            label6.Size = new Size(166, 28);
+            label6.Size = new Size(131, 21);
             label6.TabIndex = 10;
             label6.Text = "Tipo movimiento:";
             // 
@@ -139,7 +119,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(23, 47);
             label5.Name = "label5";
-            label5.Size = new Size(95, 28);
+            label5.Size = new Size(75, 21);
             label5.TabIndex = 9;
             label5.Text = "Cantidad:";
             // 
@@ -147,24 +127,24 @@
             // 
             nupCantidadMovimineto.Location = new Point(228, 45);
             nupCantidadMovimineto.Name = "nupCantidadMovimineto";
-            nupCantidadMovimineto.Size = new Size(150, 34);
+            nupCantidadMovimineto.Size = new Size(150, 29);
             nupCantidadMovimineto.TabIndex = 0;
             // 
             // lstProductos
             // 
             lstProductos.FormattingEnabled = true;
-            lstProductos.ItemHeight = 28;
+            lstProductos.ItemHeight = 21;
             lstProductos.Location = new Point(13, 282);
             lstProductos.Name = "lstProductos";
-            lstProductos.Size = new Size(498, 88);
+            lstProductos.Size = new Size(533, 172);
             lstProductos.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(15, 239);
+            label4.Location = new Point(12, 249);
             label4.Name = "label4";
-            label4.Size = new Size(201, 28);
+            label4.Size = new Size(158, 21);
             label4.TabIndex = 7;
             label4.Text = "Listado de productos:";
             // 
@@ -178,47 +158,16 @@
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // btnRecargar
-            // 
-            btnRecargar.Location = new Point(481, 12);
-            btnRecargar.Name = "btnRecargar";
-            btnRecargar.Size = new Size(284, 42);
-            btnRecargar.TabIndex = 9;
-            btnRecargar.Text = "Recargar productos";
-            btnRecargar.UseVisualStyleBackColor = true;
-            btnRecargar.Click += btnRecargar_Click;
-            // 
-            // txtID
-            // 
-            txtID.Location = new Point(266, 105);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(246, 34);
-            txtID.TabIndex = 11;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(8, 108);
-            label7.Name = "label7";
-            label7.Size = new Size(154, 28);
-            label7.TabIndex = 10;
-            label7.Text = "ID del producto:";
-            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(823, 527);
-            Controls.Add(txtID);
-            Controls.Add(label7);
-            Controls.Add(btnRecargar);
+            ClientSize = new Size(910, 642);
             Controls.Add(btnAgregar);
             Controls.Add(label4);
             Controls.Add(lstProductos);
             Controls.Add(groupBox1);
-            Controls.Add(nupCantidad);
             Controls.Add(txtNombre);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F);
@@ -226,7 +175,6 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)nupCantidad).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nupCantidadMovimineto).EndInit();
@@ -238,9 +186,7 @@
 
         private Label label1;
         private Label label2;
-        private Label label3;
         private TextBox txtNombre;
-        private NumericUpDown nupCantidad;
         private GroupBox groupBox1;
         private Button btnModificar;
         private ComboBox cbxTipoMovimiento;
@@ -250,8 +196,5 @@
         private ListBox lstProductos;
         private Label label4;
         private Button btnAgregar;
-        private Button btnRecargar;
-        private TextBox txtID;
-        private Label label7;
     }
 }

@@ -12,13 +12,13 @@ namespace Proyecto1Seminario2Grupo13
     {
         private string _id;
         private string _nombre;
-        private int _cantidad;
+  
 
-        public Producto(string id, string nombre, int cantidad)
+        public Producto(string id, string nombre)
         {
             _id = id;
             _nombre = nombre;
-            _cantidad = cantidad;
+           
         }
 
         public string ID
@@ -40,21 +40,11 @@ namespace Proyecto1Seminario2Grupo13
             }
         }
 
-        public int Cantidad // ESTO SE TIENE QUE IR
-        {
-            get { return _cantidad; }
-            set
-            {
-                if (value > 0)
-                {
-                    _cantidad = value;
-                }
-            }
-        }
+        
         public override string ToString()
         {
             // Personaliza la representación de la instancia como cadena
-            return $"{_nombre} [{_id}] | Stock actual: {_cantidad}";
+            return $"{_nombre} [{_id}] | Stock actual: ";
         }
 
         /*

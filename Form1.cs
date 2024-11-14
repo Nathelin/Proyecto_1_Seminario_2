@@ -38,10 +38,10 @@ namespace Proyecto1Seminario2Grupo13
             try
             {
                 string nombreProducto = this.txtNombre.Text;
-                int cantidadInicial = int.Parse(this.nupCantidad.Text);
+                
 
                 // Usamos el método CrearProducto del controlador para generar el ID automáticamente
-                Producto unProducto = ProductosController.CrearProducto(nombreProducto, cantidadInicial);
+                Producto unProducto = ProductosController.CrearProducto(nombreProducto);
 
                 sincronizarListado();
             }

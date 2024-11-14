@@ -14,10 +14,10 @@ namespace Proyecto1Seminario2Grupo13
             ProductosService.GuardarProducto(unProducto);
         }
 
-        public static Producto CrearProducto(string nombre, int cantidad)
+        public static Producto CrearProducto(string nombre)
         {
             int nuevoID = ProductosService.ObtenerNuevoIDProducto();
-            Producto nuevoProducto = new Producto(nuevoID.ToString(), nombre, cantidad);
+            Producto nuevoProducto = new Producto(nuevoID.ToString(), nombre);
             GuardarProducto(nuevoProducto);
             return nuevoProducto;
         }
