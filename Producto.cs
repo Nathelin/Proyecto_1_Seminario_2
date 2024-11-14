@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C2_110924;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -13,7 +14,7 @@ namespace C2_110924
         private string _nombre;
         private int _cantidad;
 
-        public Producto(string id,  string nombre, int cantidad)
+        public Producto(string id, string nombre, int cantidad)
         {
             _id = id;
             _nombre = nombre;
@@ -43,7 +44,7 @@ namespace C2_110924
                 }
             }
         }
-        
+
         public int Cantidad // ESTO SE TIENE QUE IR
         {
             get { return _cantidad; }
@@ -74,33 +75,36 @@ namespace C2_110924
             }
         }
 
+        // Se define la lista de movimientos de stock
+        private List<Movimiento> _movimientos = new List<Movimiento>();
+
         public void CargarMovimientos(List<Movimiento> listaMovimientos)
         {
             _movimientos = listaMovimientos;
         }
 
-        // Se define la lista de movimientos de stock
-        private List<Movimiento> _movimientos = new List<Movimiento>();
-
         // Se definen los métodos para agregar y restar stock
-        public Movimiento agregarUnidades(string idMovimiento, int cantidadUnidades,
+        public Movimiento agregarUnidades(int cantidadUnidades,
             DateTime fecha)
         {
-            // Se genera el objeto para registrar el movimiento
-            Movimiento carga = new Movimiento(idMovimiento, cantidadUnidades,
-                fecha);
-            // Se carga el movimiento en la lista del objeto
+            int nuevoID = ProductosService.ObtenerNuevoID();
+
+            // Generamos el objeto para registrar el movimiento
+            Movimiento carga = new Movimiento(nuevoID, cantidadUnidades, fecha);
+            // Se agrega
             _movimientos.Add(carga);
             return carga;
         }
 
-        public Movimiento restarUnidades(string idMovimiento, int cantidadUnidades,
+        public Movimiento restarUnidades(int cantidadUnidades,
             DateTime fecha)
         {
-            // Se genera el objeto para registrar el movimiento
-            Movimiento descarga = new Movimiento(idMovimiento, -cantidadUnidades,
-                fecha);
-            // Se carga el movimiento en la lista del objeto
+            int nuevoID = ProductosService.ObtenerNuevoID();
+
+            // Generamos el objeto para registrar el movimiento
+            Movimiento descarga = new Movimiento(nuevoID, -cantidadUnidades, fecha);
+
+            // Se agrega
             _movimientos.Add(descarga);
             return descarga;
         }

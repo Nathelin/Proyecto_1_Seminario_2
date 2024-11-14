@@ -22,6 +22,7 @@ namespace C2_110924
             foreach (Producto producto in productos)
             {
                 List<Movimiento> listaMovimientos = MovimientosService.ObtenerMovimientosProducto(producto);
+
                 if (listaMovimientos.Count > 0)
                 {
                     producto.CargarMovimientos(listaMovimientos);

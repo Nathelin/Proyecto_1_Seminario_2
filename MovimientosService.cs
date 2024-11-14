@@ -42,29 +42,36 @@ namespace C2_110924
         
         public static List<Movimiento> ObtenerMovimientosProducto(Producto unProducto)
         {
-            // Se establece el nombre del archivo a leer
-            string fileName = Path.Combine(GetAppPath(), "movimientos.txt");
-            if (File.Exists(fileName))
+                     
+            try
             {
-                // Se lee el archivo ya que existe
-                List<Movimiento> movimientos = new List<Movimiento>();
-                string[] lineas = File.ReadAllLines(fileName);
-                foreach (string movimientoComoTexto in lineas)
+                // Se establece el nombre del archivo a leer
+                string fileName = Path.Combine(GetAppPath(), "movimientos.txt");
+                if (File.Exists(fileName))
                 {
-                    var datos = movimientoComoTexto.Split(";");
-                    if (unProducto.ID == datos[datos.Length - 1])
+                    // Se lee el archivo ya que existe
+                    List<Movimiento> movimientos = new List<Movimiento>();
+                    string[] lineas = File.ReadAllLines(fileName);
+                    foreach (string movimientoComoTexto in lineas)
                     {
-                        Movimiento unMovimiento = new Movimiento(datos[0], int.Parse(datos[1]), DateTime.Parse(datos[2]));
-                        movimientos.Add(unMovimiento);
+                        var datos = movimientoComoTexto.Split(";");
+                        if (unProducto.ID == datos[datos.Length - 1])
+                        {
+                            Movimiento unMovimiento = new Movimiento(int.Parse(datos[0]), int.Parse(datos[1]), DateTime.Parse(datos[2]));
+                            movimientos.Add(unMovimiento);
+                        }
                     }
+                    return movimientos;
                 }
-                return movimientos;
+
+            } catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+
             }
-            else
-            {
-                // TODO: acá tiene que saltar una excepción
-                return null;
-            }
+
+            return new List<Movimiento>();
+           
         }
     }
 }

@@ -8,11 +8,11 @@ namespace C2_110924
 {
     internal class Movimiento
     {
-        public string Id { get; }
+        public int Id { get; }
         public int Cantidad { get; }
         public DateTime Fecha { get; }
 
-        public Movimiento(string id, int cantidad,
+        public Movimiento(int id, int cantidad,
             DateTime fecha)
         {
             Id = id;
