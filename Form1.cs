@@ -8,6 +8,8 @@ namespace Proyecto1Seminario2Grupo13
         private List<Producto> _listaProductos = new List<Producto>();
         // Un producto en particular para usar
         private Producto _unProducto;
+        // Instancia del controlador de movimientos
+        private MovimientosController movimientosController = new MovimientosController();
 
         public Form1()
         {
@@ -17,7 +19,6 @@ namespace Proyecto1Seminario2Grupo13
         private void sincronizarListado()
         {
             this.lstProductos.Items.Clear();
-            // List<Producto> listaProductos = new List<Producto>();
             try
             {
                 _listaProductos = ProductosController.LeerProductos();
@@ -28,12 +29,11 @@ namespace Proyecto1Seminario2Grupo13
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error  en la lectura de productos.", ex.Message);
+                MessageBox.Show($"Hubo un error en la lectura de productos: {ex.Message}");
             }
-
         }
 
-   private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -51,7 +51,6 @@ namespace Proyecto1Seminario2Grupo13
             }
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             sincronizarListado();
@@ -67,32 +66,27 @@ namespace Proyecto1Seminario2Grupo13
             if (this.lstProductos.SelectedIndex != -1)
             {
                 // Hay algo seleccionado
-                // Se necesita un movimiento seleccionado
                 _unProducto = this._listaProductos[this.lstProductos.SelectedIndex];
-                // Se va a cargar un movimiento nuevo
                 int cantidadIngresada = (int)this.nupCantidadMovimineto.Value;
-                // string observacionesMovimiento = this.txtObservaciones.Text;
                 if (this.cbxTipoMovimiento.SelectedIndex == 0)
                 {
                     // Ingreso
-                    Movimiento unMovimiento = MovimientosController.agregarUnidades(cantidadIngresada, DateTime.Now);
-                    MovimientosController.AgregarMovimiento(_unProducto, unMovimiento);
+                    Movimiento unMovimiento = movimientosController.agregarUnidades(cantidadIngresada, DateTime.Now);
+                    movimientosController.AgregarMovimiento(_unProducto, unMovimiento);
                 }
                 else
                 {
                     // Egreso
                     try
                     {
-                        Movimiento unMovimiento = MovimientosController.restarUnidades(cantidadIngresada, DateTime.Now);
-                        MovimientosController.AgregarMovimiento(_unProducto, unMovimiento);
+                        Movimiento unMovimiento = movimientosController.restarUnidades(cantidadIngresada, DateTime.Now);
+                        movimientosController.AgregarMovimiento(_unProducto, unMovimiento);
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-
                 }
-                // Se actualiza en el listbox la visualización
                 this.sincronizarListado();
             }
             else
@@ -101,4 +95,5 @@ namespace Proyecto1Seminario2Grupo13
             }
         }
     }
+
 }

@@ -9,13 +9,12 @@ namespace C2_110924
 {
     internal class MovimientosController
     {
-
         // Se define la lista de movimientos de stock
         private List<Movimiento> _movimientos = new List<Movimiento>();
 
         public void AgregarMovimiento(Producto unProducto, Movimiento unMovimiento)
         {
-            // Se podrían hacer acá estos pasos:
+            // Se podría hacer acá estos pasos:
             // - Crear el movimiento (objeto)
             // - Agregarlo al producto (con un método de la clase Producto)
 
@@ -25,13 +24,11 @@ namespace C2_110924
 
         public void CargarMovimientos(List<Movimiento> listaMovimientos)
         {
-                _movimientos = listaMovimientos ?? new List<Movimiento>();
+            _movimientos = listaMovimientos ?? new List<Movimiento>();
         }
 
         // Se definen los métodos para agregar y restar stock
-
-        public Movimiento agregarUnidades(int cantidadUnidades,
-            DateTime fecha)
+        public Movimiento agregarUnidades(int cantidadUnidades, DateTime fecha)
         {
             int nuevoID = MovimientosService.ObtenerNuevoID_Movimiento();
 
@@ -42,8 +39,7 @@ namespace C2_110924
             return carga;
         }
 
-        public Movimiento restarUnidades(int cantidadUnidades,
-            DateTime fecha)
+        public Movimiento restarUnidades(int cantidadUnidades, DateTime fecha)
         {
             int nuevoID = MovimientosService.ObtenerNuevoID_Movimiento();
 
@@ -54,7 +50,6 @@ namespace C2_110924
             _movimientos.Add(descarga);
             return descarga;
         }
-
-
     }
+
 }
