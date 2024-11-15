@@ -60,10 +60,6 @@ namespace Proyecto1Seminario2Grupo13
             this.txtNombre.Text = string.Empty;
         }
 
-            this.txtNombre.Text = string.Empty;
-
-        }
-
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
