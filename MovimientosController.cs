@@ -15,7 +15,16 @@ namespace Proyecto1Seminario2Grupo13
 
         public void CargarMovimientos(Producto unProducto)
         {
-            _movimientos = MovimientosService.ObtenerMovimientosProducto(unProducto) ?? new List<Movimiento>();
+            List<Movimiento> movimientosObtenidos = MovimientosService.ObtenerMovimientosProducto(unProducto);
+            if (movimientosObtenidos != null)
+            {
+                _movimientos = movimientosObtenidos;
+            }
+            else
+            {
+                _movimientos = new List<Movimiento>();
+            }
+
         }
 
         public Movimiento AgregarUnidades(int cantidadUnidades, DateTime fecha)

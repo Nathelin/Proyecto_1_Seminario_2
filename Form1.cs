@@ -34,7 +34,7 @@ namespace Proyecto1Seminario2Grupo13
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hubo un error en la lectura de productos: {ex.Message}");
+                MessageBox.Show($"Hubo un error en la lectura de productos: {ex.Message}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
