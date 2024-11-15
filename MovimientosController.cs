@@ -28,11 +28,28 @@ namespace Proyecto1Seminario2Grupo13
 
         public Movimiento RestarUnidades(int cantidadUnidades, DateTime fecha)
         {
-            int nuevoID = MovimientosService.ObtenerNuevoID_Movimiento();
-            Movimiento descarga = new Movimiento(nuevoID, -cantidadUnidades, fecha);
-            _movimientos.Add(descarga);
-            return descarga;
+            try
+            {
+                int stockActual = CalcularStockActual();
+
+                if (cantidadUnidades > stockActual)
+                {
+                    MessageBox.Show("No se puede restar más unidades de las disponibles en el stock.");
+                    return null;
+                }
+
+                int nuevoID = MovimientosService.ObtenerNuevoID_Movimiento();
+                Movimiento descarga = new Movimiento(nuevoID, -cantidadUnidades, fecha);
+                _movimientos.Add(descarga);
+                return descarga;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Se produjo un error al intentar restar unidades: {ex.Message}");
+                return null;
+            }
         }
+
 
         public int CalcularStockActual()
         {

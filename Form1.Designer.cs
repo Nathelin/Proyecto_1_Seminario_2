@@ -79,7 +79,7 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(nupCantidadMovimineto);
-            groupBox1.Location = new Point(35, 464);
+            groupBox1.Location = new Point(21, 206);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(781, 145);
             groupBox1.TabIndex = 5;
@@ -134,15 +134,15 @@
             // 
             lstProductos.FormattingEnabled = true;
             lstProductos.ItemHeight = 21;
-            lstProductos.Location = new Point(13, 282);
+            lstProductos.Location = new Point(21, 378);
             lstProductos.Name = "lstProductos";
-            lstProductos.Size = new Size(533, 172);
+            lstProductos.Size = new Size(595, 214);
             lstProductos.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 249);
+            label4.Location = new Point(21, 165);
             label4.Name = "label4";
             label4.Size = new Size(158, 21);
             label4.TabIndex = 7;
