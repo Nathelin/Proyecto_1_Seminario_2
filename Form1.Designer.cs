@@ -61,7 +61,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(21, 122);
             label2.Name = "label2";
-            label2.Size = new Size(163, 21);
+            label2.Size = new Size(208, 28);
             label2.TabIndex = 1;
             label2.Text = "Nombre del producto:";
             // 
@@ -69,7 +69,7 @@
             // 
             txtNombre.Location = new Point(277, 114);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(246, 29);
+            txtNombre.Size = new Size(246, 34);
             txtNombre.TabIndex = 3;
             // 
             // groupBox1
@@ -102,15 +102,16 @@
             cbxTipoMovimiento.Items.AddRange(new object[] { "AGREGAR", "QUITAR" });
             cbxTipoMovimiento.Location = new Point(228, 88);
             cbxTipoMovimiento.Name = "cbxTipoMovimiento";
-            cbxTipoMovimiento.Size = new Size(150, 29);
+            cbxTipoMovimiento.Size = new Size(150, 36);
             cbxTipoMovimiento.TabIndex = 11;
+            cbxTipoMovimiento.Text = "AGREGAR";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(23, 91);
             label6.Name = "label6";
-            label6.Size = new Size(131, 21);
+            label6.Size = new Size(166, 28);
             label6.TabIndex = 10;
             label6.Text = "Tipo movimiento:";
             // 
@@ -119,7 +120,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(23, 47);
             label5.Name = "label5";
-            label5.Size = new Size(75, 21);
+            label5.Size = new Size(95, 28);
             label5.TabIndex = 9;
             label5.Text = "Cantidad:";
             // 
@@ -127,16 +128,16 @@
             // 
             nupCantidadMovimineto.Location = new Point(228, 45);
             nupCantidadMovimineto.Name = "nupCantidadMovimineto";
-            nupCantidadMovimineto.Size = new Size(150, 29);
+            nupCantidadMovimineto.Size = new Size(150, 34);
             nupCantidadMovimineto.TabIndex = 0;
             // 
             // lstProductos
             // 
             lstProductos.FormattingEnabled = true;
-            lstProductos.ItemHeight = 21;
+            lstProductos.ItemHeight = 28;
             lstProductos.Location = new Point(21, 378);
             lstProductos.Name = "lstProductos";
-            lstProductos.Size = new Size(595, 214);
+            lstProductos.Size = new Size(595, 200);
             lstProductos.TabIndex = 6;
             // 
             // label4
@@ -144,7 +145,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(21, 165);
             label4.Name = "label4";
-            label4.Size = new Size(158, 21);
+            label4.Size = new Size(201, 28);
             label4.TabIndex = 7;
             label4.Text = "Listado de productos:";
             // 
@@ -160,7 +161,7 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(910, 642);
             Controls.Add(btnAgregar);

@@ -34,7 +34,6 @@ namespace Proyecto1Seminario2Grupo13
 
         public override string ToString()
         {
-            // Personaliza la representación de la instancia como cadena
             return $"{_nombre} [{_id}]";
         }
     }

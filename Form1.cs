@@ -14,6 +14,7 @@ namespace Proyecto1Seminario2Grupo13
         {
             InitializeComponent();
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             sincronizarListado();
@@ -28,7 +29,7 @@ namespace Proyecto1Seminario2Grupo13
                 foreach (var producto in _listaProductos)
                 {
                     movimientosController.CargarMovimientos(producto);
-                    this.lstProductos.Items.Add($"{producto} | Stock actual: {movimientosController.CalcularStockActual()}");
+                    this.lstProductos.Items.Add($"{producto} | Stock actual: {movimientosController.CalcularStockActual(producto)}");
                 }
             }
             catch (Exception ex)
@@ -60,7 +61,6 @@ namespace Proyecto1Seminario2Grupo13
             this.txtNombre.Text = string.Empty;
         }
 
-
         private void btnRecargar_Click(object sender, EventArgs e)
         {
             sincronizarListado();
@@ -70,30 +70,33 @@ namespace Proyecto1Seminario2Grupo13
         {
             if (this.lstProductos.SelectedIndex != -1)
             {
-                _unProducto = this._listaProductos[this.lstProductos.SelectedIndex];
-                int cantidadIngresada = (int)this.nupCantidadMovimineto.Value;
+                try
+                {
+                    _unProducto = this._listaProductos[this.lstProductos.SelectedIndex];
+                    int cantidadIngresada = (int)this.nupCantidadMovimineto.Value;
 
-                Movimiento unMovimiento = null;
-                if (this.cbxTipoMovimiento.SelectedIndex == 0)
-                {
-                    // Ingreso
-                    unMovimiento = movimientosController.AgregarUnidades(cantidadIngresada, DateTime.Now);
+                    Movimiento unMovimiento = null;
+                    if (this.cbxTipoMovimiento.SelectedIndex == 0)
+                    {
+                        unMovimiento = movimientosController.AgregarUnidades(cantidadIngresada, DateTime.Now);
+                    }
+                    else
+                    {
+                        unMovimiento = movimientosController.RestarUnidades(cantidadIngresada, DateTime.Now, _unProducto);
+                    }
+                    if (unMovimiento != null)
+                    {
+                        movimientosController.AgregarMovimiento(_unProducto, unMovimiento);
+                        this.sincronizarListado();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo realizar el movimiento debido a una cantidad insuficiente en el stock.");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Egreso
-                    unMovimiento = movimientosController.RestarUnidades(cantidadIngresada, DateTime.Now);
-                }
-
-                // Verificar que el movimiento no sea null antes de continuar
-                if (unMovimiento != null)
-                {
-                    movimientosController.AgregarMovimiento(_unProducto, unMovimiento);
-                    this.sincronizarListado();
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo realizar el movimiento debido a una cantidad insuficiente en el stock.");
+                    MessageBox.Show($"Hubo un error en la carga de un movimiento. {ex.Message}");
                 }
             }
             else
@@ -101,48 +104,5 @@ namespace Proyecto1Seminario2Grupo13
                 MessageBox.Show("Se tiene que seleccionar un Producto desde la lista.");
             }
         }
-
-
-
-
-
-
-
-
-
-        /* private void btnModificar_Click(object sender, EventArgs e)
-        {
-            if (this.lstProductos.SelectedIndex != -1)
-            {
-                _unProducto = this._listaProductos[this.lstProductos.SelectedIndex];
-                int cantidadIngresada = (int)this.nupCantidadMovimineto.Value;
-
-                if (this.cbxTipoMovimiento.SelectedIndex == 0)
-                {
-                    Movimiento unMovimiento = movimientosController.AgregarUnidades(cantidadIngresada, DateTime.Now);
-                    movimientosController.AgregarMovimiento(_unProducto, unMovimiento);
-                }
-                else
-                {
-                    try
-                    {
-                        Movimiento unMovimiento = movimientosController.RestarUnidades(cantidadIngresada, DateTime.Now);
-                        movimientosController.AgregarMovimiento(_unProducto, unMovimiento);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                this.sincronizarListado();
-            }
-            else
-            {
-                MessageBox.Show("Se tiene que seleccionar un Producto desde la lista.");
-            }
-        } */
-
-
-
     }
 }

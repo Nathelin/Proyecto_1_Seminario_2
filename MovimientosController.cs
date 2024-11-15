@@ -26,35 +26,29 @@ namespace Proyecto1Seminario2Grupo13
             return carga;
         }
 
-        public Movimiento RestarUnidades(int cantidadUnidades, DateTime fecha)
+        public Movimiento RestarUnidades(int cantidadUnidades, DateTime fecha, Producto unProducto)
         {
-            try
+            // Calcular el stock actual del producto antes de restar
+            int stockActual = CalcularStockActual(unProducto);
+
+            if (cantidadUnidades > stockActual)
             {
-                int stockActual = CalcularStockActual();
-
-                if (cantidadUnidades > stockActual)
-                {
-                    MessageBox.Show("No se puede restar más unidades de las disponibles en el stock.");
-                    return null;
-                }
-
+                throw new Exception("No se puede restar más unidades de las disponibles en el stock.");
+            }
+            else
+            {
                 int nuevoID = MovimientosService.ObtenerNuevoID_Movimiento();
                 Movimiento descarga = new Movimiento(nuevoID, -cantidadUnidades, fecha);
                 _movimientos.Add(descarga);
                 return descarga;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Se produjo un error al intentar restar unidades: {ex.Message}");
-                return null;
-            }
         }
 
-
-        public int CalcularStockActual()
+        public int CalcularStockActual(Producto unProducto)
         {
+            List<Movimiento> movimientos = MovimientosService.ObtenerMovimientosProducto(unProducto);
             int stockActual = 0;
-            foreach (var movimiento in _movimientos)
+            foreach (var movimiento in movimientos)
             {
                 stockActual += movimiento.Cantidad;
             }
