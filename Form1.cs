@@ -14,6 +14,10 @@ namespace Proyecto1Seminario2Grupo13
         {
             InitializeComponent();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            sincronizarListado();
+        }
 
         private void sincronizarListado()
         {
@@ -56,10 +60,10 @@ namespace Proyecto1Seminario2Grupo13
             this.txtNombre.Text = string.Empty;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            sincronizarListado();
+            this.txtNombre.Text = string.Empty;
+
         }
+
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
@@ -96,5 +100,8 @@ namespace Proyecto1Seminario2Grupo13
                 MessageBox.Show("Se tiene que seleccionar un Producto desde la lista.");
             }
         }
+
+        
+
     }
 }
