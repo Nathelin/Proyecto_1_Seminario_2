@@ -104,5 +104,10 @@ namespace Proyecto1Seminario2Grupo13
                 MessageBox.Show("Se tiene que seleccionar un Producto desde la lista.");
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
