@@ -1,9 +1,5 @@
-﻿using C2_110924;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proyecto1Seminario2Grupo13
 {
@@ -25,32 +21,11 @@ namespace Proyecto1Seminario2Grupo13
         public static List<Producto> LeerProductos()
         {
             List<Producto> productos = ProductosService.LeerProductos();
-            if (productos != null)
-            {
-                productos = CargarMovimientos(productos);
-                return productos;
-            }
-            else
+            if (productos == null)
             {
                 throw new Exception("No hay productos para mostrar");
-            }
-        }
-
-        public static List<Producto> CargarMovimientos(List<Producto> productos)
-        {
-            MovimientosController movimientosController = new MovimientosController();
-
-            foreach (Producto producto in productos)
-            {
-                List<Movimiento> listaMovimientos = MovimientosService.ObtenerMovimientosProducto(producto);
-
-                if (listaMovimientos.Count > 0)
-                {
-                    movimientosController.CargarMovimientos(listaMovimientos);
-                }
             }
             return productos;
         }
     }
-
 }
