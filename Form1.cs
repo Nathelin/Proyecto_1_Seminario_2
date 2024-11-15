@@ -15,6 +15,10 @@ namespace Proyecto1Seminario2Grupo13
         {
             InitializeComponent();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            sincronizarListado();
+        }
 
         private void sincronizarListado()
         {
@@ -35,26 +39,30 @@ namespace Proyecto1Seminario2Grupo13
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            try
+            string nombreProducto = this.txtNombre.Text;
+            if (!string.IsNullOrEmpty(nombreProducto))
             {
-                string nombreProducto = this.txtNombre.Text;
-                
+                try
+                {
+                    // Usamos el método CrearProducto del controlador para generar el ID automáticamente
+                    Producto unProducto = ProductosController.CrearProducto(nombreProducto);
 
-                // Usamos el método CrearProducto del controlador para generar el ID automáticamente
-                Producto unProducto = ProductosController.CrearProducto(nombreProducto);
-
-                sincronizarListado();
+                    sincronizarListado();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Hubo un error en la creación de un producto. {ex.Message}");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Soy un programa malo y no me gusta funcionar. {ex.Message}");
+                MessageBox.Show("El nombre no puede ser nulo o vacío.");
             }
+
+            this.txtNombre.Text = string.Empty;
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            sincronizarListado();
-        }
 
         private void btnRecargar_Click(object sender, EventArgs e)
         {
@@ -94,6 +102,9 @@ namespace Proyecto1Seminario2Grupo13
                 MessageBox.Show("Se tiene que seleccionar un Producto desde la lista.");
             }
         }
+
+        
+
     }
 
 }

@@ -47,8 +47,7 @@ namespace Proyecto1Seminario2Grupo13
             return $"{_nombre} [{_id}] | Stock actual: ";
         }
 
-        /*
-        public int StockActual
+       /* public int StockActual
         {
             get
             {
