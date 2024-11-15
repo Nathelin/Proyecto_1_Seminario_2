@@ -13,10 +13,9 @@ namespace Proyecto1Seminario2Grupo13
 
         public static void GuardarProducto(Producto unProducto)
         {
-            string fileName = Path.Combine(GetAppPath(), "productos.txt");
+            string archivo = Path.Combine(GetAppPath(), "productos.txt");
             string datos = $"{unProducto.ID};{unProducto.Nombre};0"; // Inicialmente el stock es 0
-
-            using (StreamWriter archivoSalida = new StreamWriter(fileName, true))
+            using (StreamWriter archivoSalida = new StreamWriter(archivo, true))
             {
                 archivoSalida.WriteLine(datos);
             }
@@ -24,12 +23,12 @@ namespace Proyecto1Seminario2Grupo13
 
         public static List<Producto> LeerProductos()
         {
-            string fileName = Path.Combine(GetAppPath(), "productos.txt");
+            string archivo = Path.Combine(GetAppPath(), "productos.txt");
             List<Producto> productos = new List<Producto>();
 
-            if (File.Exists(fileName))
+            if (File.Exists(archivo))
             {
-                string[] lineas = File.ReadAllLines(fileName);
+                string[] lineas = File.ReadAllLines(archivo);
                 foreach (string productoComoTexto in lineas)
                 {
                     var datos = productoComoTexto.Split(";");
@@ -43,12 +42,12 @@ namespace Proyecto1Seminario2Grupo13
 
         public static int ObtenerNuevoIDProducto()
         {
-            string fileName = Path.Combine(GetAppPath(), "productos.txt");
+            string archivo = Path.Combine(GetAppPath(), "productos.txt");
             int ultimoID = 0;
 
-            if (File.Exists(fileName))
+            if (File.Exists(archivo))
             {
-                string[] lineas = File.ReadAllLines(fileName);
+                string[] lineas = File.ReadAllLines(archivo);
                 if (lineas.Length > 0)
                 {
                     string ultimaLinea = lineas[lineas.Length - 1];

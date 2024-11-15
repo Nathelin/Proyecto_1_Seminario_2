@@ -13,10 +13,10 @@ namespace Proyecto1Seminario2Grupo13
 
         public static void GuardarMovimiento(Movimiento unMovimiento, string idProducto)
         {
-            string fileName = Path.Combine(GetAppPath(), "movimientos.txt");
+            string archivo = Path.Combine(GetAppPath(), "movimientos.txt");
             string datos = $"{unMovimiento.Id};{unMovimiento.Cantidad};{unMovimiento.Fecha};{idProducto}";
 
-            using (StreamWriter archivoSalida = new StreamWriter(fileName, true))
+            using (StreamWriter archivoSalida = new StreamWriter(archivo, true))
             {
                 archivoSalida.WriteLine(datos);
             }
@@ -24,12 +24,12 @@ namespace Proyecto1Seminario2Grupo13
 
         public static List<Movimiento> ObtenerMovimientosProducto(Producto unProducto)
         {
-            string fileName = Path.Combine(GetAppPath(), "movimientos.txt");
+            string archivo = Path.Combine(GetAppPath(), "movimientos.txt");
             List<Movimiento> movimientos = new List<Movimiento>();
 
-            if (File.Exists(fileName))
+            if (File.Exists(archivo))
             {
-                string[] lineas = File.ReadAllLines(fileName);
+                string[] lineas = File.ReadAllLines(archivo);
                 foreach (string movimientoComoTexto in lineas)
                 {
                     var datos = movimientoComoTexto.Split(";");
@@ -46,12 +46,12 @@ namespace Proyecto1Seminario2Grupo13
 
         public static int ObtenerNuevoID_Movimiento()
         {
-            string fileName = Path.Combine(GetAppPath(), "movimientos.txt");
+            string archivo = Path.Combine(GetAppPath(), "movimientos.txt");
             int ultimoID = 0;
 
-            if (File.Exists(fileName))
+            if (File.Exists(archivo))
             {
-                string[] lineas = File.ReadAllLines(fileName);
+                string[] lineas = File.ReadAllLines(archivo);
                 if (lineas.Length > 0)
                 {
                     string ultimaLinea = lineas[lineas.Length - 1];
